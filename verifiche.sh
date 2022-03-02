@@ -40,7 +40,7 @@ do
   ################# 1 #################################
 
    # leggo il file di anagrafica 
-     # smbclient -U $nas_usr $NAS -n $fake -c "prompt; cd ${nas_dir}; mget $FILE_ANAG_CSV; quit"
+      smbclient -U $nas_usr $NAS -n $fake -c "prompt; cd ${nas_dir}; mget $FILE_ANAG_CSV; quit"
 
    # rimuovo caratteri nascosti
    echo $FILE_ANAG_CSV | tr -d '\277' | tr -d '\273' | tr -d '\357' >> $FILE_ANAG_CSV
