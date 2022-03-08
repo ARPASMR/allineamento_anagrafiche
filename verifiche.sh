@@ -40,10 +40,11 @@ do
   ################# 1 #################################
 
    # leggo il file di anagrafica 
-      smbclient -U $nas_usr $NAS -n $fake -c "prompt; cd ${nas_dir}; mget $FILE_ANAG_CSV; quit"
-
-   # rimuovo caratteri nascosti
-   echo $FILE_ANAG_CSV | tr -d '\277' | tr -d '\273' | tr -d '\357' >> $FILE_ANAG_CSV
+      smbclient -U $nas_usr $NAS -n $fake -c "prompt; cd ${nas_dir}; mget $FILE_ANAG_CSV; quit"  
+      
+      echo 'IdReteVis;NomeReteVis;idStazione;Nome;IstatProvincia;Provincia;IstatComune;Comune;Attributo;Localita;Fiume;Bacino;IdTipologia;Descrizione;IdSensore;Storico;UnitaMisura;Frequenza;Quota;UTM Nord;UTM Est;CGB_Nord;CGB_Est;lat decimale;Lon decimale;DataMinimaRT;DataMassimaRT;visibilitaweb;invioPC;UTM Nord Staz;UTM Est Staz;Quota Staz'  >  temp
+      awk 'BEGIN{FS=";"}{if(NR>1) print $0}' $FILE_ANAG_CSV  >>  temp
+      mv temp $FILE_ANAG_CSV
 
    #eseguo lo script 
    Rscript A_allineamentoREM.R 
