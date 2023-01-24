@@ -22,5 +22,5 @@ RUN R -e "install.packages('foreign', repos = 'http://cran.us.r-project.org')"
 COPY . /usr/local/src/myscripts
 WORKDIR /usr/local/src/myscripts
 RUN apt-get install -y vim
-RUN chmod +x verifiche.sh
-CMD ["./verifiche.sh"]
+RUN chmod +x verifiche_k8s.sh
+CMD ["./verifiche_k8s.sh"]
