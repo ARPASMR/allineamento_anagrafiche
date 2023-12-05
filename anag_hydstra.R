@@ -214,6 +214,7 @@ cat("\n stazioni trovate : ", length(DBmeteo_staz[!aux]),"\n", file=fileout,appe
 cat("\n -------------------------------------------------------------------\n",file=fileout,append=T)
 cat("\n Ricerca sensori appartenenti al DBmeteo ma non appartenenti ad HYDSTRA Anagrafica\n",file=fileout,append=T)
 cat("\n Lo script non gestisce i terzi sensori, 7050 e 22000 sono presenti in Hydstra\n",file=fileout,append=T)
+cat("\n Il sensore 1799 non è da inserire in Hydstra\n",file=fileout,append=T)
 aux<-DBmeteo_sens %in% c(HYD_T,HYD_I,HYD_PP)
 if (length(DBmeteo_nome[!aux])>0) {
 cat("\n sensori trovati : ", length(DBmeteo_staz[!aux]),"\n", file=fileout,append=T)
